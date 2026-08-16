@@ -6,9 +6,9 @@ A minimal HTTP debug service that echoes request details back with any status co
 
 **[English](README.md) | [中文](README_CN.md)**
 
-[![Build](https://github.com/lvguanjun/debug_http/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/lvguanjun/debug_http/actions/workflows/docker-publish.yml)
-[![License: MIT](https://img.shields.io/github/license/lvguanjun/debug_http)](LICENSE)
-[![Docker Image](https://img.shields.io/badge/ghcr.io-debug__http-blue?logo=docker)](https://ghcr.io/lvguanjun/debug_http)
+[![Build](https://github.com/lvguanjun/debug-http/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/lvguanjun/debug-http/actions/workflows/docker-publish.yml)
+[![License: MIT](https://img.shields.io/github/license/lvguanjun/debug-http)](LICENSE)
+[![Docker Image](https://img.shields.io/badge/ghcr.io-debug--http-blue?logo=docker)](https://ghcr.io/lvguanjun/debug-http)
 
 </div>
 
@@ -17,13 +17,13 @@ A minimal HTTP debug service that echoes request details back with any status co
 ## Quick Start
 
 ```bash
-docker run -p 8000:8000 ghcr.io/lvguanjun/debug_http:latest
+docker run -p 8000:8000 ghcr.io/lvguanjun/debug-http:latest
 ```
 
 Or run locally with [uv](https://docs.astral.sh/uv/):
 
 ```bash
-uv run uvicorn main:app --reload
+uv run uvicorn debug_http.main:app --reload
 ```
 
 ## Usage
@@ -68,7 +68,7 @@ Response (HTTP 201):
 ```yaml
 services:
   debug-http:
-    image: ghcr.io/lvguanjun/debug_http:latest
+    image: ghcr.io/lvguanjun/debug-http:latest
     ports:
       - "8000:8000"
     restart: unless-stopped
@@ -80,7 +80,7 @@ Push to `main` → builds `latest` image. Push a `v*` tag → builds versioned i
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=lvguanjun/debug_http&type=Date)](https://star-history.com/#lvguanjun/debug_http&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=lvguanjun/debug-http&type=Date)](https://star-history.com/#lvguanjun/debug-http&Date)
 
 ## License
 

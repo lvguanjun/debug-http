@@ -1,6 +1,6 @@
 services:
   debug-http:
-    image: ghcr.io/lvguanjun/debug_http:latest
+    image: ghcr.io/lvguanjun/debug-http:latest
     ports:
       - "127.0.0.1:8000:8000"
     restart: unless-stopped
