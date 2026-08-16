@@ -1,0 +1,13 @@
+[project]
+name = "debug-http"
+version = "0.1.0"
+description = "A debug HTTP service that echoes request details back to the caller"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+]
+
+[project.scripts]
+debug-http = "main:cli"
