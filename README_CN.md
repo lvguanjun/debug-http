@@ -28,10 +28,10 @@ uv run uvicorn debug_http.main:app --reload
 
 ## 使用方法
 
-向 `/status/{code}` 发送**任意 HTTP 方法**，服务以指定状态码响应，并回显请求详情。
+向 `/status/{code}` 发送**任意 HTTP 方法**，服务以指定状态码响应，并回显请求详情。`/status/{code}` 作为前缀匹配，后面可接任意路径（包括空路径）。
 
 ```bash
-curl -X POST http://localhost:8000/status/201 \
+curl -X POST http://localhost:8000/status/201/api/test \
   -H "Content-Type: application/json" \
   -d '{"hello": "world"}'
 ```
@@ -41,6 +41,7 @@ curl -X POST http://localhost:8000/status/201 \
 ```json
 {
   "method": "POST",
+  "path": "/status/201/api/test",
   "headers": {
     "host": "localhost:8000",
     "content-type": "application/json",
@@ -58,8 +59,9 @@ curl -X POST http://localhost:8000/status/201 \
 |------|------|
 | 任意 HTTP 方法 | GET、POST、PUT、PATCH、DELETE、HEAD、OPTIONS |
 | 自定义状态码 | 100–599，通过路径参数指定 |
+| 前缀匹配 | `/status/{code}` 后可接任意路径 |
 | 智能 body 解析 | 自动尝试 JSON 反序列化，不依赖 Content-Type |
-| 完整回显 | 请求头、查询参数、请求体、客户端 IP |
+| 完整回显 | 请求路径、请求头、查询参数、请求体、客户端 IP |
 
 ## 部署
 

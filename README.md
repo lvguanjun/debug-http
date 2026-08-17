@@ -28,10 +28,10 @@ uv run uvicorn debug_http.main:app --reload
 
 ## Usage
 
-Send **any HTTP method** to `/status/{code}`, get your request echoed back with that status code.
+Send **any HTTP method** to `/status/{code}` (or `/status/{code}/any/path`), get your request echoed back with that status code. `/status/{code}` acts as a prefix — any trailing path is accepted.
 
 ```bash
-curl -X POST http://localhost:8000/status/201 \
+curl -X POST http://localhost:8000/status/201/api/test \
   -H "Content-Type: application/json" \
   -d '{"hello": "world"}'
 ```
@@ -41,6 +41,7 @@ Response (HTTP 201):
 ```json
 {
   "method": "POST",
+  "path": "/status/201/api/test",
   "headers": {
     "host": "localhost:8000",
     "content-type": "application/json",
@@ -58,8 +59,9 @@ Response (HTTP 201):
 |---------|-------------|
 | Any HTTP method | GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS |
 | Custom status code | 100–599, specified in path |
+| Prefix matching | `/status/{code}` matches any trailing path |
 | Smart body parsing | Auto-detects JSON regardless of Content-Type |
-| Full echo | Headers, query params, body, client IP |
+| Full echo | Path, headers, query params, body, client IP |
 
 ## Deployment
 

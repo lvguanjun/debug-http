@@ -8,8 +8,8 @@ from fastapi import FastAPI, Request, Response
 app = FastAPI(title="Debug HTTP", description="Echo request details for debugging")
 
 
-@app.api_route("/status/{code}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"])
-async def echo(code: int, request: Request) -> Response:
+@app.api_route("/status/{code}/{rest:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"])
+async def echo(code: int, rest: str, request: Request) -> Response:
     if not (100 <= code <= 599):
         return Response(
             content=json.dumps({"error": f"Invalid status code: {code}. Must be between 100 and 599."}),
@@ -27,6 +27,7 @@ async def echo(code: int, request: Request) -> Response:
 
     payload = {
         "method": request.method,
+        "path": request.url.path,
         "headers": dict(request.headers),
         "query_params": dict(request.query_params),
         "body": body,
