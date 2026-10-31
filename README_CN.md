@@ -28,7 +28,7 @@ uv run uvicorn debug_http.main:app --reload
 
 ## 使用方法
 
-向 `/status/{code}` 发送**任意 HTTP 方法**，服务以指定状态码响应，并回显请求详情。`/status/{code}` 作为前缀匹配，后面可接任意路径（包括空路径）。
+向 `/status/{code}` 发送**任意 HTTP 方法**，服务以指定状态码响应，并回显请求详情。`/status/{code}` 作为前缀匹配，后面可接任意路径（包括空路径）。访问 `/` 会自动重定向到 `GET /status/200`。
 
 ```bash
 curl -X POST http://localhost:8000/status/201/api/test \

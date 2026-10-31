@@ -4,8 +4,14 @@ import json
 
 import uvicorn
 from fastapi import FastAPI, Request, Response
+from fastapi.responses import RedirectResponse
 
 app = FastAPI(title="Debug HTTP", description="Echo request details for debugging")
+
+
+@app.get("/")
+async def root() -> RedirectResponse:
+    return RedirectResponse(url="/status/200")
 
 
 @app.api_route("/status/{code}/{rest:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"])

@@ -28,7 +28,7 @@ uv run uvicorn debug_http.main:app --reload
 
 ## Usage
 
-Send **any HTTP method** to `/status/{code}` (or `/status/{code}/any/path`), get your request echoed back with that status code. `/status/{code}` acts as a prefix — any trailing path is accepted.
+Send **any HTTP method** to `/status/{code}` (or `/status/{code}/any/path`), get your request echoed back with that status code. `/status/{code}` acts as a prefix — any trailing path is accepted. Visiting `/` redirects to `GET /status/200`.
 
 ```bash
 curl -X POST http://localhost:8000/status/201/api/test \
